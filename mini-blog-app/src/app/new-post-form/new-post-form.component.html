@@ -1,0 +1,36 @@
+<div class="container mt-4">
+  <h2>Crea un Nuovo Post</h2>
+  <hr>
+  
+  <form (ngSubmit)="onSubmit()" #postForm="ngForm">
+    
+    <div class="mb-3">
+      <label for="titolo" class="form-label">Titolo</label>
+      <input type="text" class="form-control" id="titolo" name="titolo" 
+             [(ngModel)]="newPost.titolo" required #titolo="ngModel"
+             [class.is-invalid]="titolo.invalid && (titolo.dirty || titolo.touched)">
+      <div class="invalid-feedback">Il titolo è obbligatorio.</div>
+    </div>
+
+    <div class="mb-3">
+      <label for="autore" class="form-label">Autore</label>
+      <input type="text" class="form-control" id="autore" name="autore" 
+             [(ngModel)]="newPost.autore" required #autore="ngModel"
+             [class.is-invalid]="autore.invalid && (autore.dirty || autore.touched)">
+      <div class="invalid-feedback">L'autore è obbligatorio.</div>
+    </div>
+    
+    <div class="mb-3">
+      <label for="contenuto" class="form-label">Contenuto</label>
+      <textarea class="form-control" id="contenuto" name="contenuto" rows="5" 
+                [(ngModel)]="newPost.contenuto" required #contenuto="ngModel"
+                [class.is-invalid]="contenuto.invalid && (contenuto.dirty || contenuto.touched)"></textarea>
+      <div class="invalid-feedback">Il contenuto è obbligatorio.</div>
+    </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="!postForm.form.valid">
+      <i class="bi bi-send"></i> Pubblica Post
+    </button>
+    <a routerLink="/" class="btn btn-secondary ms-2">Annulla</a>
+  </form>
+</div>

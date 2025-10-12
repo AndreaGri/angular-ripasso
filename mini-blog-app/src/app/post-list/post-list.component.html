@@ -1,0 +1,20 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="text-primary">Articoli del Mini Blog</h1>
+    <a routerLink="/new" class="btn btn-success shadow-sm">
+      Nuovo Post
+    </a>
+  </div>
+
+  <div class="list-group">
+    <a *ngFor="let post of posts" [routerLink]="['/post', post.id]" 
+       class="list-group-item list-group-item-action flex-column align-items-start mb-2 shadow-sm">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1 text-truncate">{{ post.titolo }}</h5>
+        <small class="text-muted">{{ post.dataCreazione | date: 'shortDate' }}</small>
+      </div>
+      <p class="mb-1 text-muted">{{ post.contenuto.substring(0, 100) }}...</p>
+      <small>Autore: {{ post.autore }}</small>
+    </a>
+  </div>
+</div>

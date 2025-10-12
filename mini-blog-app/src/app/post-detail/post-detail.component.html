@@ -1,0 +1,23 @@
+<div class="container mt-5">
+  <div *ngIf="post" class="card shadow-lg">
+    <div class="card-body">
+      <h1 class="card-title text-primary">{{ post.titolo }}</h1>
+      <p class="card-subtitle mb-2 text-muted">
+        Di **{{ post.autore }}** il {{ post.dataCreazione | date: 'medium' }}
+      </p>
+      <hr>
+      <div class="card-text">
+        <p class="lead">{{ post.contenuto }}</p>
+      </div>
+    </div>
+    <div class="card-footer">
+      <a routerLink="/" class="btn btn-secondary">
+        <i class="bi bi-arrow-left"></i> Torna alla lista
+      </a>
+    </div>
+  </div>
+
+  <div *ngIf="!post" class="alert alert-danger mt-4">
+    **Errore 404:** Post non trovato o ID non valido.
+  </div>
+</div>
